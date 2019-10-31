@@ -40,7 +40,12 @@ function modelReady() {
 }
 
 function whileTraining(loss){
-    console.log(loss);
+    if (loss){
+        console.log(loss);
+    } else {
+        console.log(`Training complete`);
+        classifier.classify(gotResult);
+    }
 }
 
 function gotResult(err, results) {
@@ -48,7 +53,7 @@ function gotResult(err, results) {
   
   elt.html(results[0].label);
   
-  classifier.predict(gotResult);
+  classifier.classify(gotResult);
 }
 
 function draw() {
